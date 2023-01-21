@@ -5,7 +5,10 @@ pipeline{
     stages{
         stage("Python Version"){
             steps{
-                sh "python --version"                                                     
+                sh "python --version" 
+                sh "pwd"
+                sh "ls"
+                sh "python /var/jenkins/script.py"
             }
         }
     }
