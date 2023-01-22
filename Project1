@@ -1,15 +1,30 @@
 pipeline{
     agent {
     label "node1"
-  }    
+  }
     stages{
         stage("Python Version"){
             steps{
                 sh "python --version" 
-                sh "pwd"
-                sh "ls"
-                sh "python /var/jenkins/script.py"
+            }
+        }
+        stage("Execute Python script"){
+            steps{
+            sh "pwd"
+            sh "ls"
+            sh "python /var/jenkins/script.py"    
+            }
+        }
+        stage("Number of lines and functions"){
+            steps{
+                sh "wc -l /var/jenkins/script.py"
+                sh "cat /var/jenkins/script.py | grep -c 'print'"
             }
         }
     }
+    post {
+    success {
+      mail to:"arpanadandin@gmailmail.com", subject:"SUCCESS: ${currentBuild.fullDisplayName}", body: "Yay, we passed."
+    }
+  }
 }
