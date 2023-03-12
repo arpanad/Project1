@@ -7,6 +7,7 @@ pipeline{
                 git branch: 'main', credentialsId: 'aa00cbc0-a6ee-46f5-b5a0-0f27f94f80bc', url: 'https://github.com/arpanad/Project1'
                 sh "ls"
                 sh "pwd"
+                sh "sh PythonCode.sh"
             }
         }
         stage("Upload to S3"){
