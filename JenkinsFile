@@ -1,0 +1,17 @@
+pipeline{
+    agent any
+    stages{
+        stage("Clone the git repo"){
+            steps{
+                sh "rm -rf Project1"
+                git branch: 'main', credentialsId: 'aa00cbc0-a6ee-46f5-b5a0-0f27f94f80bc', url: 'https://github.com/arpanad/Project1'
+                sh "ls"
+            }
+        }
+    }
+    post {
+    success {
+      mail to:"arpanadandin@gmail.com", subject:"SUCCESS: ${currentBuild.fullDisplayName}", body: "Yay, we passed."
+    }
+  }
+}
