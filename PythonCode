@@ -1,4 +1,4 @@
 print("Project 1")
 print("Clone from Git Hub"
 print("Test Webhook")
-print("Send success email to myself")
+print("Send success email to myself when job succeeds")
